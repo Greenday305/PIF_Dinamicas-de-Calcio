@@ -310,6 +310,7 @@ xj = 0.993888937283; %'xj in component INa (dimensionless)'
 
 Ca_dyad = 1.716573130685; %'Ca_dyad in component Ca (uM)'
 
+%%%% Estados iniciales para el proceso de Markov %%%%
 c1 = 0.000018211252; %'c1 in component ICaL (dimensionless)'
 c2 = 0.979322592773; %'c2 in component ICaL (dimensionless)'
 xi1ca = 0.001208153482; %'xi1ca in component ICaL (dimensionless)'
