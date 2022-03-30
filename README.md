@@ -13,5 +13,5 @@ Actividades realizadas:
   - Análisis del código
 <br>
 Cosas por hacer:
-  - Cambiar la parte de las rates para quitar las derivadas con las que se calculan los estados siguientes para calcularlos con Tau Leaping.
-  - El Tau Leaping.
+  - Cambiar la parte de las rates para quitar las derivadas con las que se calculan los estados siguientes para calcularlos con Tau Leaping
+  - El Tau Leaping
