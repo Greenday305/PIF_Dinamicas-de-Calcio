@@ -310,12 +310,15 @@ function [STATES, CONSTANTS] = initConsts()
     
     STATES(:,5) = 1.716573130685; %'Ca_dyad in component Ca (uM)'
     
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%% Estos son los de los L-type channels %%%%
     STATES(:,6) = 0.000018211252; %'c1 in component ICaL (dimensionless)'
     STATES(:,7) = 0.979322592773; %'c2 in component ICaL (dimensionless)'
     STATES(:,8) = 0.001208153482; %'xi1ca in component ICaL (dimensionless)'
     STATES(:,9) = 0.000033616596; %'xi1ba in component ICaL (dimensionless)'
     STATES(:,10) = 0.004173008466; %'xi2ca in component ICaL (dimensionless)'
     STATES(:,11) = 0.015242594688; %'xi2ba in component ICaL (dimensionless)'
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
     STATES(:,12) = 0.007074239331; %'xr in component IKr (dimensionless)'
     
@@ -467,6 +470,8 @@ function [RATES, ALGEBRAIC] = computeRates(VOI, STATES, CONSTANTS)
     ALGEBRAIC(:,14) = ( ( - STATES(:,1)./30.0000).*STATES(:,1))./30.0000;
     ALGEBRAIC(:,25) =  3.50000.*exp(ALGEBRAIC(:,14))+1.50000;
     RATES(:,18) = (ALGEBRAIC(:,22) - STATES(:,18))./ALGEBRAIC(:,25);
+    
+    %%%% ESTA ES LA PARTE DEL L-TYPE CHANNEL %%%%
     ALGEBRAIC(:,19) = 1.00000./(1.00000+exp( - (STATES(:,1) - CONSTANTS(:,15))./CONSTANTS(:,16)));
     ALGEBRAIC(:,24) = ALGEBRAIC(:,19)./CONSTANTS(:,32);
     ALGEBRAIC(:,26) = (1.00000 - ALGEBRAIC(:,19))./CONSTANTS(:,32);
@@ -496,6 +501,8 @@ function [RATES, ALGEBRAIC] = computeRates(VOI, STATES, CONSTANTS)
     ALGEBRAIC(:,30) = ( (( ALGEBRAIC(:,28).*CONSTANTS(:,28))./CONSTANTS(:,29)).*CONSTANTS(:,25))./ALGEBRAIC(:,29);
     RATES(:,8) = ( ALGEBRAIC(:,29).*STATES(:,6)+ ALGEBRAIC(:,44).*STATES(:,10)+ ALGEBRAIC(:,28).*ALGEBRAIC(:,46)) -  (ALGEBRAIC(:,32)+CONSTANTS(:,25)+ALGEBRAIC(:,30)).*STATES(:,8);
     RATES(:,9) = ( CONSTANTS(:,26).*STATES(:,6)+ ALGEBRAIC(:,45).*STATES(:,11)+ CONSTANTS(:,30).*ALGEBRAIC(:,46)) -  (ALGEBRAIC(:,33)+CONSTANTS(:,27)+CONSTANTS(:,77)).*STATES(:,9);
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
     ALGEBRAIC(:,54) = (STATES(:,1)+33.5000)./10.0000;
     ALGEBRAIC(:,60) = 1.00000./(1.00000+exp(ALGEBRAIC(:,54)));
     ALGEBRAIC(:,56) = (STATES(:,1)+60.0000)./10.0000;
