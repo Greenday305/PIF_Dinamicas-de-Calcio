@@ -4,16 +4,16 @@ tic
 clear;
 clc;
 
-N=3; %NÃºmero de componentes
-M=4; %NÃºmero de reacciones
+N=3; %Número de componentes
+M=4; %Número de reacciones
 
-%Vector X de numero de molÃ©culas de cada componente
+%Vector X de numero de moléculas de cada componente
 X=zeros(1,N);
 X(1)=1e5;
 X(2)=0;
 X(3)=0;
 
-%Constantes de cada reacciÃ³n
+%Constantes de cada reacción
 c=zeros(1,M);
 c(1)=1;
 c(2)=0.002;
@@ -83,7 +83,7 @@ while T(n)<30
     eps=zeros(1,N);
     tau=min(taus);
     %%%%%%%%%%%%%%%%%%%%%%
-    %%%% Calcular las demÃ¡s cosas %%%%
+    %%%% Calcular las demás cosas %%%%
     for j=1:M
         k(j)=poissrnd(a(j)*tau);
         lambda=lambda+k(j)*v(j,:);
@@ -102,6 +102,6 @@ plot(T,X(:,2),'o')
 hold on
 plot(T,X(:,3),'o')
 legend('X(2)','X(3)')
-disp('NÃºmero de pasos: ')
+disp('Número de pasos: ')
 disp(n)
 toc
