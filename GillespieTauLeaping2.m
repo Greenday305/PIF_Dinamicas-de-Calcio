@@ -39,7 +39,7 @@ a=zeros(1,M);
 b=zeros(M,N);
 
 %Epsilon
-eps=zeros(1,N);
+xi=zeros(1,N);
 
 %Taus
 taus=zeros(1,M);
@@ -65,18 +65,18 @@ while T(n)<30
     a0=sum(a);
     
     for j=1:M
-        eps=eps+a(j)*v(j,:);
+        xi=xi+a(j)*v(j,:);
     end
     
     for j=1:M
         for i=1:N
-            d=d+eps(i)*b(j,i);
+            d=d+xi(i)*b(j,i);
         end
         d=abs(d);
         taus(j)=ep*a0/d;
     end
     d=0;
-    eps=zeros(1,N);
+    xi=zeros(1,N);
     tau=min(taus);
     %%%%%%%%%%%%%%%%%%%%%%
     %%%% Calcular las demás cosas %%%%
